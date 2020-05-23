@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addVote } from '../reducers/anecdoteReducer';
-import { showMessage, hideMessage } from '../reducers/notificationReducer';
+import { addVote } from '../reducers/anecdotes';
+import { showMessage, hideMessage } from '../reducers/notification';
 import sortByVotes from '../helpers/sortByVotes';
 
 const AnecdoteList = () => {
