@@ -7,11 +7,11 @@ const AnecdoteForm = () => {
 
   const createAnecdote = e => {
     e.preventDefault();
-    const newAnecdote = e.target.anecdote.value;
-    e.target.anecdote.value = '';
-    console.log(newAnecdote);
 
-    dispatch(addAnecdote(newAnecdote));
+    const anecdote = e.target.anecdote.value;
+    e.target.anecdote.value = '';
+
+    dispatch(addAnecdote(anecdote));
   };
 
   return (

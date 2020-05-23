@@ -8,7 +8,7 @@ const reducer = (state = initialState, action) => {
     case 'SHOW_MSG':
       return {
         ...state,
-        message: `You voted for "${action.payload}"`,
+        message: action.payload,
         display: true,
       };
     case 'HIDE_MSG':
@@ -22,17 +22,19 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export const showMessage = anecdote => {
-  return {
+export const setNotification = (msg, timeout) => dispatch => {
+  dispatch({
     type: 'SHOW_MSG',
-    payload: anecdote,
-  };
-};
+    payload: msg,
+  });
 
-export const hideMessage = () => {
-  return {
-    type: 'HIDE_MSG',
-  };
+  setTimeout(
+    () =>
+      dispatch({
+        type: 'HIDE_MSG',
+      }),
+    timeout
+  );
 };
 
 export default reducer;
