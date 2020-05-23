@@ -22,13 +22,18 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+// Referencing the id to reset after multiple votes have occured
+let timeoutID;
+
 export const setNotification = (msg, timeout) => dispatch => {
   dispatch({
     type: 'SHOW_MSG',
     payload: msg,
   });
 
-  setTimeout(
+  if (timeoutID) clearTimeout(timeoutID);
+
+  timeoutID = setTimeout(
     () =>
       dispatch({
         type: 'HIDE_MSG',
